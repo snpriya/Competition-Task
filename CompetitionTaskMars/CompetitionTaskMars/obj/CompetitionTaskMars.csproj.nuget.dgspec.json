@@ -40,6 +40,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "AutoItX.Dotnet": {
+              "target": "Package",
+              "version": "[3.3.14.5, )"
+            },
             "DotNetSeleniumExtras.PageObjects": {
               "target": "Package",
               "version": "[3.11.0, )"
@@ -78,7 +82,7 @@
             },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[17.2.0, )"
+              "version": "[17.3.1, )"
             },
             "Microsoft.NETCore.App": {
               "target": "Package",
@@ -90,7 +94,7 @@
             },
             "MongoDB.Driver.Core": {
               "target": "Package",
-              "version": "[2.17.0, )"
+              "version": "[2.17.1, )"
             },
             "NUnit": {
               "target": "Package",
@@ -110,15 +114,15 @@
             },
             "Selenium.Support": {
               "target": "Package",
-              "version": "[4.3.0, )"
+              "version": "[4.4.0, )"
             },
             "Selenium.WebDriver": {
               "target": "Package",
-              "version": "[4.3.0, )"
+              "version": "[4.4.0, )"
             },
             "Selenium.WebDriver.ChromeDriver": {
               "target": "Package",
-              "version": "[103.0.5060.5300, )"
+              "version": "[105.0.5195.5200, )"
             },
             "SeleniumExtras.WaitHelpers": {
               "target": "Package",

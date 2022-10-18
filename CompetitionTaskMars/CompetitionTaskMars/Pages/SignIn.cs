@@ -26,30 +26,27 @@ namespace CompetitionTaskMars.Pages
         }*/
         //Find signin button
 
-        private IWebElement SignInButton => driver.FindElement(By.XPath("//*[@id='home']/div/div/div[1]/div/a"));
+        public IWebElement SignInButton => driver.FindElement(By.XPath("//*[@id='home']/div/div/div[1]/div/a"));
         
         //find username
-        private IWebElement UserName => driver.FindElement(By.XPath("//input[@name='email']"));
+        public IWebElement UserName => driver.FindElement(By.XPath("//input[@name='email']"));
         
         //find password
-        private IWebElement PassWord => driver.FindElement(By.XPath("//input[@name='password']"));
+        public IWebElement PassWord => driver.FindElement(By.XPath("//input[@name='password']"));
 
         //Find Login button
-        private IWebElement LoginButton => driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
+        public IWebElement LoginButton => driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
 
-        private IWebElement Loginmessage => driver.FindElement(By.XPath("//div/div[1]/div[2]/div/span"));
+        public IWebElement Loginmessage => driver.FindElement(By.XPath("//div/div[1]/div[2]/div/span"));
 
         public void NavigatetoHomepage()
         {
-            // ChromeDriver driver= new ChromeDriver();
-            //driver.Manage().Window.Maximize();
-            //enter the project url
-            //driver.Navigate().GoToUrl("http://localhost:5000/");
+            
             Thread.Sleep(2000);
            
            
                GlobalDefinitions.ExcelLib.PopulateInCollection(CommonDriver.ExcelPath, "signIn");
-
+            GlobalDefinitions.WaitToBeClickable(driver, "XPath", "//*[@id='home']/div/div/div[1]/div/a", 5);
             driver.Navigate().GoToUrl(GlobalDefinitions.ExcelLib.ReadData(2, "Url"));
             SignInButton.Click();
             UserName.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "UserName"));
@@ -58,12 +55,24 @@ namespace CompetitionTaskMars.Pages
                 Thread.Sleep(1000);
                LoginButton.Click();
                 Thread.Sleep(5000);
-                //Assert.That(Loginmessage.Text == "Hi sathya", "not login successfully");
-                    
+                               
                 
            
 
 
+        }
+        public void TestNegative()
+        {
+            GlobalDefinitions.ExcelLib.PopulateInCollection(CommonDriver.ExcelPath, "signIn");
+            GlobalDefinitions.WaitToBeClickable(driver, "XPath", "//*[@id='home']/div/div/div[1]/div/a", 5);
+            driver.Navigate().GoToUrl(GlobalDefinitions.ExcelLib.ReadData(3, "Url"));
+            SignInButton.Click();
+            UserName.SendKeys(GlobalDefinitions.ExcelLib.ReadData(3, "UserName"));
+            Thread.Sleep(1000);
+            PassWord.SendKeys(GlobalDefinitions.ExcelLib.ReadData(3, "PassWord"));
+            Thread.Sleep(1000);
+            LoginButton.Click();
+            Thread.Sleep(5000);
         }
     }
 }

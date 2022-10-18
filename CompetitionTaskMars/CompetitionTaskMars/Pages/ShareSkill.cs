@@ -5,6 +5,7 @@ using SeleniumExtras.PageObjects;
 //using OpenQA.Selenium.Support.PageObjects;
 //using SeleniumExtras.PageObjects;
 using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ using static CompetitionTaskMars.Utilities.GlobalDefinitions;
 using CompetitionTaskMars.Utilities;
 using OpenQA.Selenium.Support.UI;
 using static CompetitionTaskMars.Utilities.GlobalDefinitions;
+using System.Diagnostics;
 
 namespace CompetitionTaskMars.Pages
 {
@@ -150,7 +152,7 @@ namespace CompetitionTaskMars.Pages
         {
             Thread.Sleep(1000);
             //string shareskillbutton = "//div/section[1]/div/div[2]/a";
-            //GlobalDefinitions.WaitToBeClickable(driver, "XPath", "//div/section[1]/div/div[2]/a", 2);
+            GlobalDefinitions.WaitToBeClickable(driver, "XPath", "//div/section[1]/div/div[2]/a", 5);
             shareskillButton.Click();
             Thread.Sleep(2000);
         }
@@ -159,7 +161,7 @@ namespace CompetitionTaskMars.Pages
 
         public void AddSkillShare()
         {
-            //   GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "SignIn");
+            
             GlobalDefinitions.ExcelLib.PopulateInCollection(CommonDriver.ExcelPath, "ShareSkill");
             //Titlecase.Click();
             Title.Click();
@@ -293,10 +295,12 @@ namespace CompetitionTaskMars.Pages
             Thread.Sleep(5000);
             WorkSample.Click();
             Thread.Sleep(2000);
-           /* 
-            Thread.Sleep(1000);
-            
-           */
+
+            // AutoIT implementation to upload the file
+             using (Process exeProcess = Process.Start(CommonDriver.SampleWorkPath))
+            {
+                exeProcess.WaitForExit();
+            }
             string ActiveStatusXl = ExcelLib.ReadData(2, "Active");
 
             if (ActiveStatusXl == "Active")
@@ -315,8 +319,6 @@ namespace CompetitionTaskMars.Pages
             Thread.Sleep(3000);
 
         }
-
-
 
 
         public string TitleAdded()

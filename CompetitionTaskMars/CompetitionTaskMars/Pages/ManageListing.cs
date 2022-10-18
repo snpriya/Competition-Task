@@ -3,12 +3,13 @@ using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 using static CompetitionTaskMars.Utilities.GlobalDefinitions;
 using CompetitionTaskMars.Utilities;
+using System.Diagnostics;
 
 internal class ManageListing : CommonDriver
 {
     //private IWebDriver _driver;
     ManageListing ManageListingObj;
-    
+
 
     private IWebElement ManageListingTab => driver.FindElement(By.XPath("//div/section[1]/div/a[3]"));
 
@@ -18,17 +19,17 @@ internal class ManageListing : CommonDriver
 
     //view details of listing
     private IWebElement viewButton => driver.FindElement(By.XPath("//div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[1]/i"));
-    
+
     //deletebutton
-      
-     private IWebElement deleteButton => driver.FindElement(By.XPath("//div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
-       
+
+    private IWebElement deleteButton => driver.FindElement(By.XPath("//div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[3]/i"));
+
     //accept delete
 
     private IWebElement deleteButtonaccept => driver.FindElement(By.XPath("/html/body/div[2]/div/div[3]/button[2]"));
     //Edit Details
     private IWebElement EditButton => driver.FindElement(By.XPath("//div[2]/div[1]/div[1]/table/tbody/tr/td[8]/div/button[2]/i"));
-    
+
 
 
     private IList<IWebElement> ServiceTypeRadioButton = driver.FindElements(By.Name("serviceType"));
@@ -122,25 +123,26 @@ internal class ManageListing : CommonDriver
         ManageListingTab.Click();
         Thread.Sleep(1000);
     }
-    
+
 
     public void ViewManageListings()
     {
         ManageListingTab.Click();
         Thread.Sleep(1000);
         viewButton.Click();
-        
+
         Thread.Sleep(3000);
         ManageListingTab.Click();
-          Thread.Sleep(3000);
+        Thread.Sleep(3000);
 
     }
     public void EditManageListing()
     {
         Thread.Sleep(2000);
+        GlobalDefinitions.WaitToBeClickable(driver, "XPath", "//div/section[1]/div/a[3]", 5);
         GlobalDefinitions.ExcelLib.PopulateInCollection(CommonDriver.ExcelPath, "Edit");
         ManageListingTab.Click();
-        
+
         Thread.Sleep(2000);
         EditButton.Click();
         Thread.Sleep(1000);
@@ -250,6 +252,10 @@ internal class ManageListing : CommonDriver
         }
         Thread.Sleep(5000);
         WorkSample.Click();
+        using (Process exeProcess = Process.Start(CommonDriver.SampleWorkPath))
+        {
+            exeProcess.WaitForExit();
+        }
         Thread.Sleep(2000);
         /* 
          Thread.Sleep(1000);
@@ -292,7 +298,6 @@ internal class ManageListing : CommonDriver
 
 
 
-
     public void DeleteManageListing()
     {
         Thread.Sleep(2000);
@@ -302,8 +307,21 @@ internal class ManageListing : CommonDriver
         Thread.Sleep(3000);
 
     }
+    public string TitleEdited()
+    {
 
-    
+        return TitleEditedExcel();
+
+    }
+    public string DescriptionEdited()
+    {
+
+        return DescriptionEditedExcel();
+
+    }
+
+
+
 
     private string TitleVi = "//*[@id='service-detail-section']/div[2]/div/div[2]/div[1]/div[1]/div[2]/h1/span";
     private string DescriptionVi = "//*[@id='service-detail-section']/div[2]/div/div[2]/div[1]/div[1]/div[2]/div[2]/div/div/div[1]/div/div/div/div[2]";
@@ -322,7 +340,4 @@ internal class ManageListing : CommonDriver
         return DescriptionView.Text;
 
     }
-
-
-
 }

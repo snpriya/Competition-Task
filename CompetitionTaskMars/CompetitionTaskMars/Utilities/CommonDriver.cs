@@ -29,7 +29,7 @@ namespace CompetitionTaskMars.Utilities
         public static String ExcelPath = @"C:\MarsCompetitionTask\Competition-Task\CompetitionTaskMars\CompetitionTaskMars\ExcelData\signIn.xlsx";
         public static string ScreenshotPath = @"C:\MarsCompetitionTask\Competition-Task\CompetitionTaskMars\CompetitionTaskMars\MarsLib\Screenshot\";
         public static string ReportPath = @"C:\MarsCompetitionTask\Competition-Task\CompetitionTaskMars\CompetitionTaskMars\MarsLib\TestReports\";
-        //public static string SampleWorkPath = MarsResource.SampleWorkPath;
+        public static string SampleWorkPath = @"C:\MarsCompetitionTask\Competition-Task\CompetitionTaskMars\CompetitionTaskMars\MarsLib\AutoIt\autoscript.exe";
         #region reports
         public static AventStack.ExtentReports.ExtentReports extent;
         public static AventStack.ExtentReports.ExtentTest test;
@@ -67,12 +67,13 @@ namespace CompetitionTaskMars.Utilities
         public void LoginActions()
         {
             driver = new ChromeDriver();
-            loginPageObj = new SignIn();
+           SignIn loginPageObj = new SignIn();
 
             ShareSkillObj = new ShareSkill();
             driver.Manage().Window.Maximize();
             loginPageObj.NavigatetoHomepage();
             ShareSkillObj.WelcomeMessageCheck();
+            loginPageObj.TestNegative();
             // profile.welcomeMessage();
 
         }

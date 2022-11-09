@@ -46,7 +46,7 @@ namespace CompetitionTaskMars.Pages
            
            
                GlobalDefinitions.ExcelLib.PopulateInCollection(CommonDriver.ExcelPath, "signIn");
-           // GlobalDefinitions.WaitToBeClickable(driver, "XPath", "//*[@id='home']/div/div/div[1]/div/a", 5);
+           GlobalDefinitions.WaitToBeClickable(driver, "XPath", "//*[@id='home']/div/div/div[1]/div/a", 5);
             driver.Navigate().GoToUrl(GlobalDefinitions.ExcelLib.ReadData(2, "Url"));
             SignInButton.Click();
             UserName.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "UserName"));

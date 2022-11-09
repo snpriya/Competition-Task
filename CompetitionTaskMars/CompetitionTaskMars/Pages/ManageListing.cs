@@ -5,7 +5,7 @@ using static CompetitionTaskMars.Utilities.GlobalDefinitions;
 using CompetitionTaskMars.Utilities;
 using System.Diagnostics;
 
-internal class ManageListing : CommonDriver
+public class ManageListing : CommonDriver
 {
     //private IWebDriver _driver;
     ManageListing ManageListingObj;
@@ -14,7 +14,7 @@ internal class ManageListing : CommonDriver
     private IWebElement ManageListingTab => driver.FindElement(By.XPath("//div/section[1]/div/a[3]"));
 
     //  string ManageListingTabWait => "//*[@id='service-listing-section']/section[1]/div/a[3]";
-    ////  WaitHelpers.WaitToBeVisible(driver, "XPath", ManageListingTabWait, 2);
+    //  WaitHelpers.WaitToBeVisible(driver, "XPath", ManageListingTabWait, 2);
 
 
     //view details of listing
@@ -188,57 +188,60 @@ internal class ManageListing : CommonDriver
         //EndTimeDropDownM.Click();
 
         //EndTimeM.SendKeys(DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime")).ToString("hh:mmtt"));
-        //for (int j = 1; j < 8; j++)
-        //{
+        for (int j = 1; j < 8; j++)
+        {
 
-        string daysInput = GlobalDefinitions.ExcelLib.ReadData(2, "AvailableDays");
-        //  string Days = "";
-        //switch (daysInput)
-        //{
-        //  case "Sun":
-        //    Days = "0";
-        //  break;
-        //case "Mon":
-        //  Days = "1";
-        mon.Click();
-        //break;
-        //case "Tue":
-        //  Days = "2";
-        //break;
-        //case "Wed":
-        //  Days = "3";
-        //break;
-        //case "Thu":
-        //  Days = "4";
-        //break;
-        //case "Fri":
-        //  Days = "5";
-        //break;
-        //case "Sat":
-        //  Days = "6";
-        //break;
+            string daysInput = GlobalDefinitions.ExcelLib.ReadData(2, "AvailableDays");
+            string Days = "";
+            switch (daysInput)
+            {
+                case "Sun":
+                    Days = "0";
+                    break;
+                case "Mon":
+                    Days = "1";
+                    mon.Click();
+                    break;
+                case "Tue":
+                    Days = "2";
+                    break;
+                case "Wed":
+                    Days = "3";
+                    break;
+                case "Thu":
+                    Days = "4";
+                    break;
+                case "Fri":
+                    Days = "5";
+                    break;
+                case "Sat":
+                    Days = "6";
+                    break;
 
-        //}
+            }
 
-        //for (int i = 0; i < AvailableDays.Count; i++)
-        //{
-
-
-
-
-        //  string Available = AvailableDays[i].GetAttribute("index").ToString();
-
-
-        //if (Days == Available)
-        //{
-        //  AvailableDays[i].Click();
-
-        starttime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "StartTime"));
-
-        endtime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "FinishTime"));
+            for (int i = 0; i < AvailableDays.Count; i++)
+            {
 
 
 
+
+                string Available = AvailableDays[i].GetAttribute("index").ToString();
+
+
+                if (Days == Available)
+                {
+                    AvailableDays[i].Click();
+
+                    starttime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "StartTime"));
+
+                    endtime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "FinishTime"));
+
+
+                }
+            }
+
+        }
         string SkillTradeXl = GlobalDefinitions.ExcelLib.ReadData(2, "SkillTrade");
         if (SkillTradeXl == "Skill-exchange")
         {
@@ -259,15 +262,15 @@ internal class ManageListing : CommonDriver
         {
             exeProcess.WaitForExit();
         }
-       // using (Process exeProcess = Process.Start(CommonDriver.SampleWorkPath))
+        // using (Process exeProcess = Process.Start(CommonDriver.SampleWorkPath))
         //{
-          //  exeProcess.WaitForExit();
+        //  exeProcess.WaitForExit();
         //}
         Thread.Sleep(2000);
-        /* 
-         Thread.Sleep(1000);
 
-        */
+        Thread.Sleep(1000);
+
+
         string ActiveStatusXl = ExcelLib.ReadData(2, "Active");
 
         if (ActiveStatusXl == "Active")
@@ -305,31 +308,24 @@ internal class ManageListing : CommonDriver
 
 
 
-    public void DeleteManageListing()
+
+
+
+    public void TitleEdited()
     {
-        Thread.Sleep(2000);
-        deleteButton.Click();
-        Thread.Sleep(1000);
-        deleteButtonaccept.Click();
-        Thread.Sleep(3000);
+
+        //return TitleEdit.Text;
 
     }
-    public string TitleEdited()
+    public void DescriptionEdited()
     {
 
-        return TitleEditedExcel();
-
-    }
-    public string DescriptionEdited()
-    {
-
-        return DescriptionEditedExcel();
+        //return DescriptionEdit.Text;
 
     }
 
 
-
-
+    
     private string TitleVi = "//*[@id='service-detail-section']/div[2]/div/div[2]/div[1]/div[1]/div[2]/h1/span";
     private string DescriptionVi = "//*[@id='service-detail-section']/div[2]/div/div[2]/div[1]/div[1]/div[2]/div[2]/div/div/div[1]/div/div/div/div[2]";
 
@@ -347,4 +343,18 @@ internal class ManageListing : CommonDriver
         return DescriptionView.Text;
 
     }
+
+
+
+    public void DeleteManageListing()
+    {
+        Thread.Sleep(2000);
+        deleteButton.Click();
+        Thread.Sleep(1000);
+        deleteButtonaccept.Click();
+        Thread.Sleep(3000);
+
+    }
 }
+
+

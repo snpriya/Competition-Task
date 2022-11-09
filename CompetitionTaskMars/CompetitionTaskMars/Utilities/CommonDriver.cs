@@ -71,9 +71,10 @@ namespace CompetitionTaskMars.Utilities
 
             ShareSkillObj = new ShareSkill();
             driver.Manage().Window.Maximize();
+           // driver.Navigate().GoToUrl("http://localhost:5000/");
             loginPageObj.NavigatetoHomepage();
             ShareSkillObj.WelcomeMessageCheck();
-            loginPageObj.TestNegative();
+            //loginPageObj.TestNegative();
             // profile.welcomeMessage();
 
         }

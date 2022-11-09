@@ -38,7 +38,7 @@ internal class ManageListing : CommonDriver
     //title
     private IWebElement etitle => driver.FindElement(By.XPath("//div[2]/div/form/div[1]/div/div[2]/div/div[1]/input"));
     //description
-    private IWebElement edescription => driver.FindElement(By.XPath("//div[2]/div/form/div[1]/div/div[2]/div/div[1]/input"));
+    private IWebElement edescription => driver.FindElement(By.XPath("//div[2]/div/form/div[2]/div/div[2]/div[1]/textarea"));
 
     //private IWebElement Description => driver.FindElement(By.Name("description"));
 
@@ -147,8 +147,9 @@ internal class ManageListing : CommonDriver
         EditButton.Click();
         Thread.Sleep(1000);
         etitle.Clear();
-        Thread.Sleep(1000);
+        //Thread.Sleep(1000);
         etitle.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Title"));
+        Thread.Sleep(500);
         edescription.Clear();
         edescription.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Description"));
         string CategoryXl = (GlobalDefinitions.ExcelLib.ReadData(2, "Category"));
@@ -157,6 +158,7 @@ internal class ManageListing : CommonDriver
         //Tags.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Tags"));
         dTags.Click();
         Tags.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Tags"));
+        Tags.SendKeys(Keys.Return);
         SubCategory.Click();
         var servicetypeText = GlobalDefinitions.ExcelLib.ReadData(2, "ServiceType");
         if (servicetypeText == "Hourly basis service")
@@ -252,10 +254,15 @@ internal class ManageListing : CommonDriver
         }
         Thread.Sleep(5000);
         WorkSample.Click();
+        // AutoIT implementation to upload the file
         using (Process exeProcess = Process.Start(CommonDriver.SampleWorkPath))
         {
             exeProcess.WaitForExit();
         }
+       // using (Process exeProcess = Process.Start(CommonDriver.SampleWorkPath))
+        //{
+          //  exeProcess.WaitForExit();
+        //}
         Thread.Sleep(2000);
         /* 
          Thread.Sleep(1000);

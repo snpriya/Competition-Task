@@ -38,7 +38,7 @@ namespace CompetitionTaskMars.Pages
         private IWebElement MessageHI => driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/div[1]/div[2]/div/span"));
 
         //ShareSkill Button to add skill sharing details
-        private IWebElement shareskillButton => driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[1]/div/div[2]/a"));
+        private IWebElement shareskillButton => driver.FindElement(By.XPath("//div/section[1]/div/div[2]/a"));
 
 
         // Title case
@@ -79,7 +79,7 @@ namespace CompetitionTaskMars.Pages
         private IWebElement LocationTypeOnline => driver.FindElement(By.XPath("//div[2]/div/form/div[6]/div[2]/div/div[2]/div/input"));
         //start date calender
         private IWebElement StartDate => driver.FindElement(By.Name("startDate"));
-        private IWebElement StartDateCalender => driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[7]/div[2]/div/div[1]/div[2]/input"));
+        private IWebElement StartDateCalender => driver.FindElement(By.XPath("//div[2]/div/form/div[7]/div[2]/div/div[1]/div[2]/input"));
 
         //EndDate Calender
         private IWebElement EndDate => driver.FindElement(By.Name("endDate"));
@@ -152,7 +152,7 @@ namespace CompetitionTaskMars.Pages
         {
             Thread.Sleep(1000);
             //string shareskillbutton = "//div/section[1]/div/div[2]/a";
-            GlobalDefinitions.WaitToBeClickable(driver, "XPath", "//div/section[1]/div/div[2]/a", 5);
+            //GlobalDefinitions.WaitToBeClickable(driver, "XPath", "//div/section[1]/div/div[2]/a", 5);
             shareskillButton.Click();
             Thread.Sleep(2000);
         }
@@ -320,7 +320,7 @@ namespace CompetitionTaskMars.Pages
 
         }
 
-
+/*
         public string TitleAdded()
         {
 
@@ -345,7 +345,7 @@ namespace CompetitionTaskMars.Pages
 
             return DescriptionExcel.ToString();
 
-        }
+        }*/
 
     }
 }

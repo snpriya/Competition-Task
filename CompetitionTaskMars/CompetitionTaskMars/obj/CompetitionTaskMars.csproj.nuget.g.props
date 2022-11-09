@@ -79,7 +79,7 @@
     <Import Project="$(NuGetPackageRoot)microsoft.net.test.sdk\17.3.1\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.props" Condition="Exists('$(NuGetPackageRoot)microsoft.net.test.sdk\17.3.1\build\netcoreapp2.1\Microsoft.NET.Test.Sdk.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgWebDriver_ChromeDriver_win32 Condition=" '$(PkgWebDriver_ChromeDriver_win32)' == '' ">C:\Users\pc\.nuget\packages\webdriver.chromedriver.win32\103.0.5060.53</PkgWebDriver_ChromeDriver_win32>
+    <PkgWebDriver_ChromeDriver_win32 Condition=" '$(PkgWebDriver_ChromeDriver_win32)' == '' ">C:\Users\pc\.nuget\packages\webdriver.chromedriver.win32\105.0.5195.52</PkgWebDriver_ChromeDriver_win32>
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\pc\.nuget\packages\microsoft.codeanalysis.analyzers\1.1.0</PkgMicrosoft_CodeAnalysis_Analyzers>
   </PropertyGroup>
 </Project>

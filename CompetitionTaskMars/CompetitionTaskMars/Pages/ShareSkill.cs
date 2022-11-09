@@ -18,18 +18,18 @@ using System.Diagnostics;
 
 namespace CompetitionTaskMars.Pages
 {
-    internal class ShareSkill :CommonDriver
+    internal class ShareSkill : CommonDriver
     {
         //private IWebDriver _driver;
         ShareSkill ShareSkillObj;
 
-       // public ShareSkill()
+        // public ShareSkill()
         //{
-          //  _driver = driver;
-            // ShareSkillObj = PageFactory.InitElements<ShareSkill>(driver);
-            //PageFactory.InitElements(driver, this);
+        //  _driver = driver;
+        // ShareSkillObj = PageFactory.InitElements<ShareSkill>(driver);
+        //PageFactory.InitElements(driver, this);
 
-        
+
         //}
 
 
@@ -38,7 +38,7 @@ namespace CompetitionTaskMars.Pages
         private IWebElement MessageHI => driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/div[1]/div[2]/div/span"));
 
         //ShareSkill Button to add skill sharing details
-        private IWebElement shareskillButton => driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[1]/div/div[2]/a"));
+        private IWebElement shareskillButton => driver.FindElement(By.XPath("//div/section[1]/div/div[2]/a"));
 
 
         // Title case
@@ -61,7 +61,7 @@ namespace CompetitionTaskMars.Pages
         private IWebElement SubCategory => driver.FindElement(By.XPath("//div[2]/div/form/div[3]/div[2]/div/div[2]/div[1]/select/option[5]"));
 
         //[FindsBy(How = How.XPath, Using XPath= "//div[2]/div/form/div[3]/div[2]/div/div[2]/div[1]/select/option[5]")]
-        //private IWebElement SubCategorySelect { get; set; }
+        // private IWebElement SubCategorySelect { get; set; }
         //Tag
         private IWebElement Tags => driver.FindElement(By.XPath("//div[2]/div/form/div[4]/div[2]/div/div/div/div/input"));
 
@@ -79,7 +79,7 @@ namespace CompetitionTaskMars.Pages
         private IWebElement LocationTypeOnline => driver.FindElement(By.XPath("//div[2]/div/form/div[6]/div[2]/div/div[2]/div/input"));
         //start date calender
         private IWebElement StartDate => driver.FindElement(By.Name("startDate"));
-        private IWebElement StartDateCalender => driver.FindElement(By.XPath("//*[@id='service-listing-section']/div[2]/div/form/div[7]/div[2]/div/div[1]/div[2]/input"));
+        private IWebElement StartDateCalender => driver.FindElement(By.XPath("//div[2]/div/form/div[7]/div[2]/div/div[1]/div[2]/input"));
 
         //EndDate Calender
         private IWebElement EndDate => driver.FindElement(By.Name("endDate"));
@@ -98,7 +98,7 @@ namespace CompetitionTaskMars.Pages
         private IWebElement endtime => driver.FindElement(By.XPath("//div[2]/div/form/div[7]/div[2]/div/div[3]/div[3]/input"));
         //Finish Time selector index
 
-        private IList<IWebElement> EndTime=> driver.FindElements(By.Name("EndTime"));
+        private IList<IWebElement> EndTime => driver.FindElements(By.Name("EndTime"));
 
         //Skill Trade selector index change skill exchange -0 and credit-1
 
@@ -152,7 +152,7 @@ namespace CompetitionTaskMars.Pages
         {
             Thread.Sleep(1000);
             //string shareskillbutton = "//div/section[1]/div/div[2]/a";
-            GlobalDefinitions.WaitToBeClickable(driver, "XPath", "//div/section[1]/div/div[2]/a", 5);
+            //GlobalDefinitions.WaitToBeClickable(driver, "XPath", "//div/section[1]/div/div[2]/a", 5);
             shareskillButton.Click();
             Thread.Sleep(2000);
         }
@@ -161,7 +161,7 @@ namespace CompetitionTaskMars.Pages
 
         public void AddSkillShare()
         {
-            
+
             GlobalDefinitions.ExcelLib.PopulateInCollection(CommonDriver.ExcelPath, "ShareSkill");
             //Titlecase.Click();
             Title.Click();
@@ -174,24 +174,24 @@ namespace CompetitionTaskMars.Pages
             string CategoryXl = (GlobalDefinitions.ExcelLib.ReadData(2, "Category"));
 
 
-           // CategorySelect.Click();
-            
-            //var CategorySel = new SelectElement(CategorySelect);
+            CategorySelect.Click();
 
-            //for (int i = 0; i < CategoryXl.Count(); i++)
+            var CategorySel = new SelectElement(CategorySelect);
+
+            for (int i = 0; i < CategoryXl.Count(); i++)
             {
 
-              //  CategorySel.SelectByText(CategoryXl);
+                CategorySel.SelectByText(CategoryXl);
 
-                //if (CategoryXl == CategorySelect.ToString())
+                if (CategoryXl == CategorySelect.ToString())
                 {
                     CategorySelect.Click();
                 }
             }
-            //SubCategorySelect.Click();
-            
-            //var selectSubCategory = new SelectElement(SubCategory);
-            String subcategory=(GlobalDefinitions.ExcelLib.ReadData(2, "SubCategory"));
+            // SubCategorySelect.Click();
+
+            var selectSubCategory = new SelectElement(SubCategory);
+            String subcategory = (GlobalDefinitions.ExcelLib.ReadData(2, "SubCategory"));
             SubCategory.Click();
             Tags.Click();
             Tags.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Tags"));
@@ -228,55 +228,57 @@ namespace CompetitionTaskMars.Pages
             //EndTimeDropDownM.Click();
 
             //EndTimeM.SendKeys(DateTime.Parse(GlobalDefinitions.ExcelLib.ReadData(2, "Endtime")).ToString("hh:mmtt"));
-            //for (int j = 1; j < 8; j++)
-            //{
+            for (int j = 1; j < 8; j++)
+            {
 
                 string daysInput = GlobalDefinitions.ExcelLib.ReadData(2, "AvailableDays");
-              //  string Days = "";
-                //switch (daysInput)
-                //{
-                  //  case "Sun":
-                    //    Days = "0";
-                      //  break;
-                    //case "Mon":
-                      //  Days = "1";
+                string Days = "";
+                switch (daysInput)
+                {
+                    case "Sun":
+                        Days = "0";
+                        break;
+                    case "Mon":
+                        Days = "1";
                         mon.Click();
-                        //break;
-                    //case "Tue":
-                      //  Days = "2";
-                        //break;
-                    //case "Wed":
-                      //  Days = "3";
-                        //break;
-                    //case "Thu":
-                      //  Days = "4";
-                        //break;
-                    //case "Fri":
-                      //  Days = "5";
-                        //break;
-                    //case "Sat":
-                      //  Days = "6";
-                        //break;
+                        break;
+                    case "Tue":
+                        Days = "2";
+                        break;
+                    case "Wed":
+                        Days = "3";
+                        break;
+                    case "Thu":
+                        Days = "4";
+                        break;
+                    case "Fri":
+                        Days = "5";
+                        break;
+                    case "Sat":
+                        Days = "6";
+                        break;
 
-                //}
+                }
 
-                //for (int i = 0; i < AvailableDays.Count; i++)
-                //{
-
-
+                for (int i = 0; i < AvailableDays.Count; i++)
+                {
 
 
-                  //  string Available = AvailableDays[i].GetAttribute("index").ToString();
 
 
-                    //if (Days == Available)
-                    //{
-                      //  AvailableDays[i].Click();
+                    string Available = AvailableDays[i].GetAttribute("index").ToString();
 
-              starttime.SendKeys (GlobalDefinitions.ExcelLib.ReadData(2, "StartTime"));
-            
-               endtime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "FinishTime"));
-            
+
+                    if (Days == Available)
+                    {
+                        AvailableDays[i].Click();
+
+                        starttime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "StartTime"));
+
+                        endtime.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "FinishTime"));
+                    }
+                }
+            }
 
 
             string SkillTradeXl = GlobalDefinitions.ExcelLib.ReadData(2, "SkillTrade");
@@ -297,7 +299,7 @@ namespace CompetitionTaskMars.Pages
             Thread.Sleep(2000);
 
             // AutoIT implementation to upload the file
-             using (Process exeProcess = Process.Start(CommonDriver.SampleWorkPath))
+            using (Process exeProcess = Process.Start(CommonDriver.SampleWorkPath))
             {
                 exeProcess.WaitForExit();
             }
@@ -347,5 +349,8 @@ namespace CompetitionTaskMars.Pages
 
         }
 
+
     }
 }
+    
+

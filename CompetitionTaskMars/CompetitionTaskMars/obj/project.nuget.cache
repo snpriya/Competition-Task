@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "93VrXlas6Cy6Vfn770sXszYNzV+qtPukfQFF/HXqvRCKWF1eO1PUUK6n9+wWZygl8hWhivunih7uOGJ5imzaRA==",
+  "dgSpecHash": "rdi32fE/87gfRmUZo/u6NJrZyI3gYEtb24SXivo6oyCqrUbgrNr7g8i6+Q1M7ysnCsFjbA+/AtfaaRkpYyKZqA==",
   "success": true,
   "projectFilePath": "C:\\MarsCompetitionTask\\Competition-Task\\CompetitionTaskMars\\CompetitionTaskMars\\CompetitionTaskMars.csproj",
   "expectedPackageFiles": [
@@ -118,7 +118,7 @@
     "C:\\Users\\pc\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\selenium.support\\4.4.0\\selenium.support.4.4.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\selenium.webdriver\\4.4.0\\selenium.webdriver.4.4.0.nupkg.sha512",
-    "C:\\Users\\pc\\.nuget\\packages\\selenium.webdriver.chromedriver\\105.0.5195.5200\\selenium.webdriver.chromedriver.105.0.5195.5200.nupkg.sha512",
+    "C:\\Users\\pc\\.nuget\\packages\\selenium.webdriver.chromedriver\\107.0.5304.6200\\selenium.webdriver.chromedriver.107.0.5304.6200.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\seleniumextras.waithelpers\\1.0.2\\seleniumextras.waithelpers.1.0.2.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
@@ -193,7 +193,7 @@
     "C:\\Users\\pc\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
     "C:\\Users\\pc\\.nuget\\packages\\system.xml.xpath.xdocument\\4.3.0\\system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\pc\\.nuget\\packages\\webdriver.chromedriver.win32\\103.0.5060.53\\webdriver.chromedriver.win32.103.0.5060.53.nupkg.sha512"
+    "C:\\Users\\pc\\.nuget\\packages\\webdriver.chromedriver.win32\\105.0.5195.52\\webdriver.chromedriver.win32.105.0.5195.52.nupkg.sha512"
   ],
   "logs": [
     {

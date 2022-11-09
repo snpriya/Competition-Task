@@ -19,13 +19,15 @@ internal class ShareSkillTest : CommonDriver
         ShareSkillObj.NavigateToShareSkill();
         ShareSkillObj.AddSkillShare();
 
-        //Assertion objects
+        
+       
+       //Assert.That(ExcelAddTitle == "testing", "Title Addded Does not match with the existing");
         string ExcelAddTitle = ShareSkillObj.TitleAddedExcel().ToString();
-       string ExecelAddDescription = ShareSkillObj.DescriptionAddedExcel().ToString();
-       string AddTitle = ShareSkillObj.TitleAdded().ToString();
-       string AddDescription = ShareSkillObj.DescriptionAdded().ToString();
-       Assert.That(ExcelAddTitle == "testing", "Title Addded Does not match with the existing");
-      Assert.That(ExecelAddDescription == AddDescription, "Description Addded Does not match with the existing");
+        string ExecelAddDescription = ShareSkillObj.DescriptionAddedExcel().ToString();
+        string AddTitle = ShareSkillObj.TitleAdded().ToString();
+        string AddDescription = ShareSkillObj.DescriptionAdded().ToString();
+        Assert.That(ExcelAddTitle == AddTitle, "Title Addded Does not match with the existing");
+        Assert.That(ExecelAddDescription == AddDescription, "Description Addded Does not match with the existing");
 
     }
     [Test, Order(2)]
@@ -65,17 +67,12 @@ internal class ShareSkillTest : CommonDriver
         ManageListingObj.ViewManageListings();
         ManageListingObj.NavigateManageListing();
         ManageListingObj.DeleteManageListing();
-        //Assertion Objects
-                     
-       
-        string EditExcelTitle = ManageListingObj.TitleEditedExcel().ToString();
-       
-        Assert.That(EditExcelTitle == "POM", "Title Edited Does not match with the existing");
-       
+        
+        
     
         }
     [Test,Order(4)]
-    public void login()
+    public void loginNeg()
     {
         SignIn loginobj = new SignIn();
         test = extent.CreateTest(TestContext.CurrentContext.Test.Name);

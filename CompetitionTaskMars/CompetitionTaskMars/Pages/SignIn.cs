@@ -13,7 +13,7 @@ using static CompetitionTaskMars.Utilities.GlobalDefinitions;
 
 namespace CompetitionTaskMars.Pages
 {
-    internal class SignIn:CommonDriver
+    public class SignIn:CommonDriver
     {
         //private IWebDriver driver;
         /*public  SignIn(IWebDriver driver)
@@ -26,13 +26,13 @@ namespace CompetitionTaskMars.Pages
         }*/
         //Find signin button
 
-        public IWebElement SignInButton => driver.FindElement(By.XPath("//*[@id='home']/div/div/div[1]/div/a"));
+        public IWebElement SignInButton => driver.FindElement(By.XPath("//div/div/div[1]/div/a"));
         
         //find username
-        public IWebElement UserName => driver.FindElement(By.XPath("//input[@name='email']"));
+        public IWebElement UserName => driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/input"));
         
         //find password
-        public IWebElement PassWord => driver.FindElement(By.XPath("//input[@name='password']"));
+        public IWebElement PassWord => driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/input"));
 
         //Find Login button
         public IWebElement LoginButton => driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
@@ -46,7 +46,7 @@ namespace CompetitionTaskMars.Pages
            
            
                GlobalDefinitions.ExcelLib.PopulateInCollection(CommonDriver.ExcelPath, "signIn");
-            GlobalDefinitions.WaitToBeClickable(driver, "XPath", "//*[@id='home']/div/div/div[1]/div/a", 5);
+           GlobalDefinitions.WaitToBeClickable(driver, "XPath", "//*[@id='home']/div/div/div[1]/div/a", 5);
             driver.Navigate().GoToUrl(GlobalDefinitions.ExcelLib.ReadData(2, "Url"));
             SignInButton.Click();
             UserName.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "UserName"));
@@ -64,7 +64,7 @@ namespace CompetitionTaskMars.Pages
         public void TestNegative()
         {
             GlobalDefinitions.ExcelLib.PopulateInCollection(CommonDriver.ExcelPath, "signIn");
-            GlobalDefinitions.WaitToBeClickable(driver, "XPath", "//*[@id='home']/div/div/div[1]/div/a", 5);
+            //GlobalDefinitions.WaitToBeClickable(driver, "XPath", "//*[@id='home']/div/div/div[1]/div/a", 5);
             driver.Navigate().GoToUrl(GlobalDefinitions.ExcelLib.ReadData(3, "Url"));
             SignInButton.Click();
             UserName.SendKeys(GlobalDefinitions.ExcelLib.ReadData(3, "UserName"));
